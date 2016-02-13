@@ -8,8 +8,10 @@ angular.module('shortly.shorten', [])
 
   $scope.addLink = function(){
     //console.log($scope.link);
+    $scope.loading = true;
     Links.addLink($scope.link)
       .then(function() {
+        $scope.loading = false;
         $location.path('/links');
       })
       .catch(function(error){
